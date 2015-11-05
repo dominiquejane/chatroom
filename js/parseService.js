@@ -16,11 +16,11 @@ app.service('parseService', function($http){
   
   //postData method here
 
-  this.postData = function(text) {
+  this.postData = function(newMessage) {
     return $http({
       method: 'POST',
       url: 'https://api.parse.com/1/classes/chat',
-      data: {text: text}
+      data: {text: newMessage}
     })
   }
   

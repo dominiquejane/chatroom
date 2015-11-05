@@ -10,10 +10,26 @@
     <div class="main-container">
       <h1> DevMountain Chat Room </h1>
       <form ng-submit="postData()">
-        <input class="form-control text-box" type="text" ng-model="message" placeholder="Message">
+        <input class="form-control text-box" type="text" ng-model="message" placeholder="Write A Chat Message">
       </form>
+
+      <input ng-model="searchText" placeholder="Search Chat Messages">
+
+      <select ng-model="searchDate">
+        <option value="+">Newest First</option>
+        <option value="-">Oldest First</option>
+      </select>
+
       <div class="messages-container">
-        <p ng-repeat="message in messages"> {{message.text}} </p>
+        <div ng-repeat="message in messages | filter:searchText | orderBy: searchDate + 'createdAt' "> 
+        <!-- //where searchDate is +/- 
+          OR, orderBy: 'createdAt':searchDate //where searchDate is truthy or falsey -->
+          <div class="message-block">
+            <p class="message-text"> {{message.text}}</p>
+            <p class="message-date"> {{message.createdAt | date }} </p>
+          </div>
+        </div>
+
       </div>
     </div>
 

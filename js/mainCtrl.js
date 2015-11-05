@@ -12,6 +12,10 @@ $scope.getParseData = function() {
   })
 }
 
+$scope.parse = function(date) {
+  date = date.Date.prototype.toDateString();
+  return date;
+}
 
   //The postData function will take whatever the user typed in (hint: look at the html and see what ng-model correlates to on the input box),
   //pass that text to the postData method on the parseService object which will then post it to the parse backend.
@@ -23,7 +27,6 @@ $scope.postData = function() {
   });
 
   };
-
 
 
   //uncomment this code when your getParseData function is finished
